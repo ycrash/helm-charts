@@ -1,0 +1,21 @@
+ycrash:
+  secrets:
+    license: 
+      create: true
+      name: ycrash-license
+      # content is to be set from --set-file
+      content:
+  deployment:
+    image: andylibrian/ycrash-unofficial:dev-prometheus-integration
+    imagePullPolicy: Always
+    resources:
+      requests:
+        cpu: 100m
+        memory: 2500Mi
+      limits:
+        cpu: 
+        memory: 
+    secrets:
+      license:
+        secretName: ycrash-license
+        key: license.lic

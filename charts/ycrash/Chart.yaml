@@ -1,0 +1,10 @@
+apiVersion: v1
+name: ycrash
+version: 0.0.1
+appVersion: "latest"
+description: Non-intrusive, AI aided, instant root cause analysis tool
+keywords:
+- root-cause-analysis
+home: https://ycrash.io/
+sources:
+- https://github.com/ycrash/helm-charts

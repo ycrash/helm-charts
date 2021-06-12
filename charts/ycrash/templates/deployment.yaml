@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ycrash
+  labels:
+    app: ycrash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ycrash
+  template:
+    metadata:
+      labels:
+        app: ycrash
+    spec:
+      containers:
+      - name: ycrash
+        image: {{ .Values.ycrash.deployment.image }}
+        imagePullPolicy: {{ .Values.ycrash.deployment.imagePullPolicy }}
+        ports:
+        - containerPort: 8080
+          name: http
+        readinessProbe:
+          httpGet:
+            path: /debug
+            port: http
+        livenessProbe:
+          tcpSocket:
+            port: http
+          failureThreshold: 5
+          periodSeconds: 10
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh", "-c", "sleep 30"]
+        resources:
+          requests:
+            cpu: {{ .Values.ycrash.deployment.resources.requests.cpu }}
+            memory: {{ .Values.ycrash.deployment.resources.requests.memory }}
+          {{- with .Values.ycrash.deployment.resources.limits }}
+          limits:
+            {{- if .cpu }}
+            cpu: {{ .cpu }}
+            {{- end }}
+            {{- if .memory }}
+            memory: {{ .memory }}
+            {{- end }}
+          {{- end }}
+        volumeMounts:
+        - name: ycrash-license
+          mountPath: "/opt/workspace/yc/license.lic"
+          subPath: license.lic
+      volumes:
+      - name: ycrash-license
+        secret:
+          secretName: {{ .Values.ycrash.deployment.secrets.license.secretName }}
+          items:
+          - key: {{ .Values.ycrash.deployment.secrets.license.key }}
+            path: license.lic
+
