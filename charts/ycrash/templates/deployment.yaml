@@ -51,6 +51,13 @@ spec:
         - name: ycrash-license
           mountPath: "/opt/workspace/yc/license.lic"
           subPath: license.lic
+{{ if .Values.ycrash.storage }}
+{{ if .Values.ycrash.storage.s3 }}
+        - name: storage
+          mountPath: "/opt/workspace/yc/storage.xml"
+          subPath: storage.xml
+{{ end }}
+{{ end }}
       volumes:
       - name: ycrash-license
         secret:
@@ -58,4 +65,13 @@ spec:
           items:
           - key: {{ .Values.ycrash.deployment.secrets.license.key }}
             path: license.lic
-
+{{ if .Values.ycrash.storage }}
+{{ if .Values.ycrash.storage.s3 }}
+      - name: storage
+        secret:
+          secretName: ycrash-storage-s3
+          items:
+          - key: storage.xml
+            path: storage.xml
+{{ end }}
+{{ end }}

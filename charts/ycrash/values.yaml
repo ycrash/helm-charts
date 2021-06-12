@@ -1,10 +1,4 @@
 ycrash:
-  secrets:
-    license: 
-      create: true
-      name: ycrash-license
-      # content is to be set from --set-file
-      content:
   deployment:
     image: andylibrian/ycrash-unofficial:dev-prometheus-integration
     imagePullPolicy: Always
@@ -19,3 +13,17 @@ ycrash:
       license:
         secretName: ycrash-license
         key: license.lic
+  secrets:
+    license:
+      create: true
+      name: ycrash-license
+      # content is to be set from --set-file
+      content:
+  storage:
+    # https://docs.ycrash.io/ycrash-server/administration/aws-s3-storage.html
+    # s3:
+      # endPointUrl: https://s3.us-west-1.amazonaws.com
+      # region: us-west-1
+      # bucketName: my-bucket
+      # accessKey: my-access-key
+      # secretKey: my-secrete-key
