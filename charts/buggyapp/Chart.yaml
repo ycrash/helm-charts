@@ -1,0 +1,10 @@
+apiVersion: v1
+name: buggyapp
+version: 0.0.1
+appVersion: "latest"
+description: Simulate performance problems. BuggyApp can simulate various performance problems like Memory Leak, OutOfMemoryError, CPU spike, thread leak StackOverflowError, deadlock, unresponsiveness and so on.
+keywords:
+- root-cause-analysis
+home: https://buggyapp.ycrash.io/
+sources:
+- https://github.com/ycrash/helm-charts

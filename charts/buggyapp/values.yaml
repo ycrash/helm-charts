@@ -1,0 +1,16 @@
+buggyapp:
+  secrets:
+    agentConfig:
+      # key is required to make ycrash agent works
+      key:
+      server: http://ycrash:8080
+  deployment:
+    image: andylibrian/buggyapp-unofficial:dev-prometheus-integration
+    imagePullPolicy: Always
+    resources:
+      requests:
+        cpu: 100m
+        memory: 2500Mi
+      limits:
+        cpu: 1
+        memory: 2500Mi

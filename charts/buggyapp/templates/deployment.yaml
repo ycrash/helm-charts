@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buggyapp
+  labels:
+    app: buggyapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: buggyapp
+  template:
+    metadata:
+      labels:
+        app: buggyapp
+    spec:
+      containers:
+      - name: buggyapp
+        image: {{ .Values.buggyapp.deployment.image }}
+        imagePullPolicy: {{ .Values.buggyapp.deployment.imagePullPolicy }}
+        ports:
+        - containerPort: 9010
+          name: http
+        - containerPort: 8085
+          name: yc-agent
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+        livenessProbe:
+          tcpSocket:
+            port: http
+          failureThreshold: 5
+          periodSeconds: 10
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh", "-c", "sleep 30"]
+        resources:
+          requests:
+            cpu: {{ .Values.buggyapp.deployment.resources.requests.cpu }}
+            memory: {{ .Values.buggyapp.deployment.resources.requests.memory }}
+          {{- with .Values.buggyapp.deployment.resources.limits }}
+          limits:
+            {{- if .cpu }}
+            cpu: {{ .cpu }}
+            {{- end }}
+            {{- if .memory }}
+            memory: {{ .memory }}
+            {{- end }}
+          {{- end }}
+        volumeMounts:
+        - name: ycrash-agent-config
+          mountPath: "/opt/workspace/yc/agent/config.yaml"
+          subPath: config.yaml
+        resources:
+          limits:
+            memory: 1Gi
+      volumes:
+      - name: ycrash-agent-config
+        secret:
+          secretName: ycrash-agent-config
+          items:
+          - key: config.yaml
+            path: config.yaml
+
