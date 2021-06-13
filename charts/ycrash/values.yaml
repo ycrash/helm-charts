@@ -17,10 +17,11 @@ ycrash:
     license:
       create: true
       name: ycrash-license
-      # content is to be set from --set-file
+      # content is to be set from --set-file ycrash.secrets.license.content=license.lic
+      # the license.lic is obtained from https://ycrash.io/
       content:
   storage:
-    # https://docs.ycrash.io/ycrash-server/administration/aws-s3-storage.html
+    # Uncomment the following key to enable s3 storage: https://docs.ycrash.io/ycrash-server/administration/aws-s3-storage.html
     # s3:
       # endPointUrl: https://s3.us-west-1.amazonaws.com
       # region: us-west-1
