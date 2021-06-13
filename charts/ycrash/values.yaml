@@ -1,5 +1,6 @@
 ycrash:
   deployment:
+    extraAnnotations:
     image: andylibrian/ycrash-unofficial:dev-prometheus-integration
     imagePullPolicy: Always
     resources:
@@ -20,6 +21,8 @@ ycrash:
       # content is to be set from --set-file ycrash.secrets.license.content=license.lic
       # the license.lic is obtained from https://ycrash.io/
       content:
+  service:
+    extraAnnotations:
   storage:
     # Uncomment the following key to enable s3 storage: https://docs.ycrash.io/ycrash-server/administration/aws-s3-storage.html
     # s3:
