@@ -2,7 +2,7 @@
 
 ## How to use yCrash Helm repository
 
-```
+```bash
 helm repo add ycrash https://ycrash.github.io/helm-charts
 helm repo update
 ```
@@ -15,13 +15,13 @@ helm repo update
 
 2. Run helm install / upgrade:
 
-```
+```bash
 helm upgrade -i ycrash ycrash/ycrash --set-file ycrash.secrets.license.content=license.lic
 ```
 
 or with S3 storage:
 
-```
+```bash
 helm upgrade -i ycrash ycrash/ycrash \
   --set-file ycrash.secrets.license.content=license.lic \
   --set ycrash.storage.s3.endPointUrl=https://s3.us-west-1.amazonaws.com \
@@ -36,7 +36,7 @@ See [charts/ycrash/values.yaml](charts/ycrash/values.yaml) for the complete conf
 
 ### BuggyApp
 
-```
+```bash
 helm upgrade -i buggyapp ycrash/buggyapp --set buggyapp.secrets.agentConfig.key=Licensee@UserNo
 ```
 
