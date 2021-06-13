@@ -7,7 +7,8 @@ We use [Chart Releaser](https://github.com/helm/chart-releaser) to release chart
 
 1. Download chart-releaser to your bin path
 
-2. Get a github personal access token
+2. Get a [GitHub personal access token](https://github.com/settings/tokens) with scope:
+   - [x] repo
 
 3. Setup env vars
 
@@ -20,8 +21,8 @@ We use [Chart Releaser](https://github.com/helm/chart-releaser) to release chart
    For more configuration, see [https://github.com/helm/chart-releaser](https://github.com/helm/chart-releaser).
 
 4. Bump chart versions, update the chart files and commit the changes:
-  - [charts/ycrash/Chart.yaml](charts/ycrash/Chart.yaml)
-  - [charts/buggyapp/Chart.yaml](charts/buggyapp/Chart.yaml)
+  - [charts/ycrash/Chart.yaml](../charts/ycrash/Chart.yaml)
+  - [charts/buggyapp/Chart.yaml](../charts/buggyapp/Chart.yaml)
 
 5. Run cr package:
 
