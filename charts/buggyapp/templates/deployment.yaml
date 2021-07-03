@@ -53,9 +53,6 @@ spec:
         - name: ycrash-agent-config
           mountPath: "/opt/workspace/yc/agent/config.yaml"
           subPath: config.yaml
-        resources:
-          limits:
-            memory: 1Gi
       volumes:
       - name: ycrash-agent-config
         secret:
