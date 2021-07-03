@@ -3,6 +3,22 @@ entries:
   buggyapp:
   - apiVersion: v1
     appVersion: latest
+    created: "2021-07-03T16:09:14.421080979+07:00"
+    description: Simulate performance problems. BuggyApp can simulate various performance
+      problems like Memory Leak, OutOfMemoryError, CPU spike, thread leak StackOverflowError,
+      deadlock, unresponsiveness and so on.
+    digest: fb45261d6164a97e8e965e80a1be9c13d2ee8ac89ce2009a0dacffd2e89e923f
+    home: https://buggyapp.ycrash.io/
+    keywords:
+    - root-cause-analysis
+    name: buggyapp
+    sources:
+    - https://github.com/ycrash/helm-charts
+    urls:
+    - https://github.com/ycrash/helm-charts/releases/download/buggyapp-0.0.3/buggyapp-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v1
+    appVersion: latest
     created: "2021-06-13T07:33:49.837629156+07:00"
     description: Simulate performance problems. BuggyApp can simulate various performance
       problems like Memory Leak, OutOfMemoryError, CPU spike, thread leak StackOverflowError,
@@ -76,4 +92,4 @@ entries:
     urls:
     - https://github.com/ycrash/helm-charts/releases/download/ycrash-0.0.1/ycrash-0.0.1.tgz
     version: 0.0.1
-generated: "2021-06-13T22:58:29.201172717+07:00"
+generated: "2021-07-03T16:09:15.076756989+07:00"
