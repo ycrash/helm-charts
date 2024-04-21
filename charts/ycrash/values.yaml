@@ -1,12 +1,18 @@
 ycrash:
   deployment:
     extraAnnotations:
-    image: andylibrian/ycrash-unofficial:dev-prometheus-integration
-    imagePullPolicy: Always
+    image: ycrash/ycrash:2.19.7
+    imagePullPolicy: IfNotPresent
+    replicas: 1
     resources:
       requests:
         cpu: 100m
-        memory: 2500Mi
+        # You want to allocate 2x the size of your application's JVM heap size (i.e. -Xmx).
+        # Let's say you want to monitor multiple applications whose heap size (i.e. -Xmx) varies,
+        # then you want to pick the largest heap size.
+        # Let's say your largest application's heap size is 2GB, then you want to allocate 4GB
+        # as the RAM size requirement for yCrash server.
+        memory: 2Gi
       limits:
         cpu: 
         memory: 
@@ -23,6 +29,8 @@ ycrash:
       content:
   service:
     extraAnnotations:
+  # If you would like to have high availability setup (multiple replicas), you would need to enable
+  # a shared storage so that multiple replicas can access the same uploaded artifacts.
   storage:
     # Uncomment the following key to enable s3 storage: https://docs.ycrash.io/ycrash-server/administration/aws-s3-storage.html
     # s3:

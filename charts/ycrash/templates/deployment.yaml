@@ -3,25 +3,28 @@ kind: Deployment
 metadata:
   name: ycrash
   labels:
-    app: ycrash
+    app.kubernetes.io/name: ycrash
 {{- if .Values.ycrash.deployment.extraAnnotations }}
   annotations:
 {{ toYaml .Values.ycrash.deployment.extraAnnotations | indent 4 }}
 {{- end }}
 spec:
-  replicas: 1
+{{- if .Values.ycrash.deployment.replicas }}
+  replicas: {{ .Values.ycrash.deployment.replicas }}
+{{- end }}
   selector:
     matchLabels:
-      app: ycrash
+      app.kubernetes.io/name: ycrash
   template:
     metadata:
       labels:
-        app: ycrash
+        app.kubernetes.io/name: ycrash
 {{- if .Values.ycrash.deployment.extraAnnotations }}
       annotations:
 {{ toYaml .Values.ycrash.deployment.extraAnnotations | indent 8 }}
 {{- end }}
     spec:
+      automountServiceAccountToken: false
       containers:
       - name: ycrash
         image: {{ .Values.ycrash.deployment.image }}

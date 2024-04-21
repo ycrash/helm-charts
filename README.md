@@ -37,7 +37,7 @@ See [charts/ycrash/values.yaml](charts/ycrash/values.yaml) for the complete conf
 ### BuggyApp
 
 ```bash
-helm upgrade -i buggyapp ycrash/buggyapp --set buggyapp.secrets.agentConfig.key=Licensee@UserNo
+helm upgrade -i buggyapp ycrash/buggyapp --set buggyapp.secrets.agentConfig.options.k=Licensee@UserNo
 ```
 
 *Get your key (Licensee@UserNo) from your `license.lic` file.*
