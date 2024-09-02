@@ -1,7 +1,7 @@
 apiVersion: v1
 name: ycrash
 version: 0.0.4
-appVersion: "2.19.7"
+appVersion: "2.20.4.1"
 description: Non-intrusive, AI aided, instant root cause analysis tool
 keywords:
 - root-cause-analysis
