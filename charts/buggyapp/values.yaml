@@ -1,19 +1,23 @@
 buggyapp:
   secrets:
     agentConfig:
-      # Key is required to make ycrash agent works. Its value is Licensee@UserNo from the license.lic
-      # you get from https://ycrash.io/
-      key:
-      server: http://ycrash:8080
+      version: "1"
+      options:
+        # Key is required to make ycrash agent works. Its value is Licensee@UserNo from the license.lic
+        # you get from https://ycrash.io/
+        k: 
+        s: http://ycrash:8080
+        port: 8085
+        address: 0.0.0.0
   deployment:
-    image: andylibrian/buggyapp-unofficial:dev-prometheus-integration
+    image: ycrash/buggyapp:latest
 
     # Default image pull policy is Always until we reach a stable version
     imagePullPolicy: Always
     resources:
       requests:
         cpu: 100m
-        memory: 2500Mi
+        memory: 1Gi
       limits:
         cpu: 1
-        memory: 2500Mi
+        memory: 1Gi

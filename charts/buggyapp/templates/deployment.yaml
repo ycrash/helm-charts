@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: buggyapp
   labels:
-    app: buggyapp
+    app.kubernetes.io/name: buggyapp
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: buggyapp
+      app.kubernetes.io/name: buggyapp
   template:
     metadata:
       labels:
-        app: buggyapp
+        app.kubernetes.io/name: buggyapp
     spec:
       containers:
       - name: buggyapp

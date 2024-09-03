@@ -12,7 +12,7 @@ ycrash:
         # then you want to pick the largest heap size.
         # Let's say your largest application's heap size is 2GB, then you want to allocate 4GB
         # as the RAM size requirement for yCrash server.
-        memory: 2Gi
+        memory: 4Gi
       limits:
         cpu: 
         memory: 
