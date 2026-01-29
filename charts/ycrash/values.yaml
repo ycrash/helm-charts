@@ -1,7 +1,7 @@
 ycrash:
   deployment:
     extraAnnotations:
-    image: ycrash/ycrash:2.20.4.1
+    image: ycrash/ycrash:latest
     imagePullPolicy: IfNotPresent
     replicas: 1
     resources:
